@@ -6,12 +6,20 @@ using System.Threading.Tasks;
 
 namespace Nemo
 {
-    internal class clients
+    public class clients
     {
 		private int _idcli;
 		private string _nomcli;
 		private string _prenomcli;
 		private string _niveaucli;
+		private string _sexeCli;
+
+		public string SexeCli
+		{
+			get { return _sexeCli; }
+			set { _sexeCli = value; }
+		}
+
 
 		public string NiveauCli
 		{
@@ -39,19 +47,15 @@ namespace Nemo
 			set { _idcli = value; }
 		}
 
-		public clients (int idcli, string nomcli, string prenomcli, string niveaucli)
+		public clients (int idcli, string nomcli, string prenomcli, string niveaucli, string sexecli)
 		{
 			_idcli = idcli;
 			_nomcli = nomcli;
 			_prenomcli = prenomcli;
 			_niveaucli = niveaucli;
+			_sexeCli = sexecli;
 
 
 		}
-
-        public override string ToString()
-        {
-            return Convert.ToString(_id);
-        }
-    }
+	}
 }

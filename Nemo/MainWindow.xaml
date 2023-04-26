@@ -6,8 +6,70 @@
         xmlns:local="clr-namespace:Nemo"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <DataGrid x:Name="dtgClients" d:ItemsSource="{Binding}" Margin="0,37,400,92" SelectionChanged="DataGrid_SelectionChanged" Grid.ColumnSpan="4"/>
-
+    <Grid OpacityMask="#FF006FF3">
+        <TabControl HorizontalAlignment="Left" Height="400" Margin="10,0,0,0" VerticalAlignment="Top" Width="750">
+            <TabItem Header="CLIENT" Height="22" VerticalAlignment="Top">
+                <Grid x:Name="GridClient" Background="#FF3772F0" Margin="0,1,0,-1" OpacityMask="#FF3772F0">
+                    <DataGrid x:Name="dtgClients" HorizontalAlignment="Left" Height="350" Margin="10,10,0,0" VerticalAlignment="Top" Width="400" SelectionChanged="dtgClients_SelectionChanged"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="512,26,0,0" TextWrapping="Wrap" Text="IDENTIFICATION" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="426,76,0,0" TextWrapping="Wrap" Text="*Champ obligatoire " VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="456,127,0,0" TextWrapping="Wrap" Text="Nom :" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="456,163,0,0" TextWrapping="Wrap" Text="Prenom : " VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBox x:Name="TextNom" HorizontalAlignment="Left" Height="23" Margin="512,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="TextPrenom" HorizontalAlignment="Left" Height="23" Margin="512,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <CheckBox x:Name="BoxHomme" Content="HOMME" HorizontalAlignment="Left" Margin="478,216,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.523,2.333" FontWeight="Bold" Checked="BoxHomme_Checked"/>
+                    <CheckBox x:Name="BoxFemme" Content="FEMME" HorizontalAlignment="Left" Margin="575,216,0,0" VerticalAlignment="Top" FontWeight="Bold" Checked="BoxFemme_Checked"/>
+                    <Button x:Name="BtnEnvoyerID" Content="Ajouter" HorizontalAlignment="Left" Margin="659,342,0,0" VerticalAlignment="Top" Width="75" Click="BtnEnvoyerID_Click"/>
+                    <ComboBox x:Name="cboNiveau" HorizontalAlignment="Left" Margin="517,272,0,0" VerticalAlignment="Top" Width="120" Height="20">
+                        <ComboBoxItem Content="niveau 0"/>
+                        <ComboBoxItem Content="niveau 1"/>
+                        <ComboBoxItem Content="niveau 2"/>
+                        <ComboBoxItem Content="niveau 3 et 4"/>
+                    </ComboBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="NIVEAU">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="#FF3772F0" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid x:Name="GridNiveau" Background="#FF3772F0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="30*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Left" Margin="306,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="37" Width="94" FontSize="24" Text="NIVEAU" Grid.Column="1" FontWeight="Bold"/>
+                    <CheckBox Content="CheckBox" HorizontalAlignment="Left" Height="0" Margin="463,113,0,0" VerticalAlignment="Top" Width="3" Grid.Column="1"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="20,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2" FontWeight="Bold"><Run Text="*"/><Run Text="Niveau 0 : " TextDecorations="Underline"/><Run Text="doit etre encadré par un monituer . Il ne peut prétendre qu'à un stage Découverte"/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Margin="20,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2" FontWeight="Bold"><Run Text="*"/><Run Text="Niveau 1 : " TextDecorations="Underline"/><Run Text="doit etre encadré par un moniteur. Peut participer a toutes les plongées qui ont lieu dans la z"/><Run Text="o"/><Run Text="ne comprise en 0 e"/><Run Text="t 2"/><Run Text="0m de profondeur"/><Run Text="."/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Margin="20,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2" FontWeight="Bold"><Run Text="*"/><Run Text="Niveau 2: " TextDecorations="Underline"/><Run Text="peut plonger avec un plongeur de niveau 2 ou plus d"/><Run Text="an"/><Run Text="s la zone 0 et 20 m. Doit etre avec un moniteur dans la zone 20 et40 m de profondeur "/><LineBreak/><Run/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Margin="20,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2" FontWeight="Bold"><Run Text="*"/><Run Text="niveau 3 , 4 : " TextDecorations="Underline"/><Run Text="peut plonger avec un plongeur de niveau 2 ou plus d"/><Run Text="an"/><Run Text="s la zone 0 et 20 m."/><Run Text=" Peut plonger avec un plongeur de niveau 3 ou 4 dans la zone comprise entre 20 et 40 m . "/></TextBlock>
+                </Grid>
+            </TabItem>
+            <TabItem Header="MATERIEL" Margin="-2,-2,-2,0">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="#FF3772F0" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid x:Name="GridMateriel" Background="#FF3772F0">
+                    <DataGrid x:Name="DataGridMateriel" HorizontalAlignment="Left" Height="350" Margin="10,10,0,0" VerticalAlignment="Top" Width="400"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="540,23,0,0" TextWrapping="Wrap" Text="MATERIEL" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+                    <CheckBox x:Name="BoxPMT" Content="Lot PMT " HorizontalAlignment="Left" Margin="453,74,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <CheckBox x:Name="BoxCombinaison" Content="Combinaison " HorizontalAlignment="Left" Margin="453,112,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <CheckBox x:Name="BoxBouteille" Content="Bouteille" HorizontalAlignment="Left" Margin="453,174,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <CheckBox x:Name="BoxGilet" Content="Gilet de stabilisation" HorizontalAlignment="Left" Margin="453,142,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <CheckBox x:Name="BoxOrdi" Content="Ordinateur de plongée" HorizontalAlignment="Left" Margin="453,208,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <CheckBox x:Name="BoxDétenteur" Content="Détenteur " HorizontalAlignment="Left" Margin="453,281,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <CheckBox x:Name="BoxCeinture" Content="Ceinture avec des plonbs de plongée" HorizontalAlignment="Left" Margin="453,246,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="470,91,0,0" TextWrapping="Wrap" Text="(Palme, masque , Tuba)" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Button x:Name="BtnEnvoyerMT" Content="Envoyer" HorizontalAlignment="Left" Margin="653,345,0,0" VerticalAlignment="Top" Width="75"/>
+                    <CheckBox x:Name="BoxAucun" Content="Aucun" HorizontalAlignment="Left" Margin="453,313,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

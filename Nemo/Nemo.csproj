@@ -98,6 +98,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="classe\bdd.cs" />
     <Compile Include="classe\clients.cs" />
     <Compile Include="classe\DBMySQLUtils.cs" />
     <Compile Include="classe\DBUtils.cs" />
